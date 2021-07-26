@@ -1,0 +1,67 @@
+/*!
+Theme Name: Magive
+Author: ShoHakamada <s.hakamada@interliteracy.com>
+Version: 1.00
+Description: Magive - WordPressテーマ
+*/
+
+/*---------------------------------
+
+  * Foundation
+
+---------------------------------*/
+@import 'foundation/reset';
+@import 'foundation/font';
+@import 'foundation/variable';
+@import 'foundation/mixin';
+@import 'foundation/base';
+
+/*---------------------------------
+
+  * Layput
+
+---------------------------------*/
+@import 'layout/header';
+@import 'layout/contents';
+@import 'layout/footer';
+
+/*---------------------------------
+
+  * Object
+
+---------------------------------*/
+/*---------- Component ----------*/
+@import 'object/component/split-str';
+@import 'object/component/cursor';
+@import 'object/component/transition-mask';
+
+/*----------- Project -----------*/
+/**
+ *
+ * Common
+ *
+ */
+@import 'object/project/common/gnav';
+
+/**
+ *
+ * Top
+ *
+ */
+@import 'object/project/top/top-kv';
+@import 'object/project/top/top-mask';
+
+/**
+ *
+ * Works
+ *
+ */
+@import 'object/project/works/works-list';
+@import 'object/project/works/works-kv';
+@import 'object/project/works/works-detail';
+@import 'object/project/works/works-cover-img';
+@import 'object/project/works/works-design-detail';
+@import 'object/project/works/works-next';
+
+/*----------- Utility -----------*/
+@import 'object/utility/tools';

@@ -1,0 +1,43 @@
+.p-works-list {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+
+  &__main {
+    align-items: center;
+    display: flex;
+    padding: 0 5vw;
+    height: 100%;
+  }
+
+  &__works-item {
+    position: relative;
+    transition: transform .5s ease-out;
+    height: 477px;
+    width: 850px;
+
+    &:not(:last-child) {
+      margin-right: 200px;
+    }
+
+    img {
+      filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, .15));
+      transform-origin: center;
+      transition: transform 1s ease-out;
+      height: 100%;
+      width: 100%;
+
+      &:hover {
+        transform: rotate(4deg);
+      }
+    }
+
+    &:nth-child(2n) img:hover {
+      transform: rotate(2deg);
+    }
+    
+    &:nth-child(3n) img:hover {
+      transform: rotate(-2deg);
+    }
+  }
+}

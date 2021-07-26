@@ -1,0 +1,21 @@
+.js-split-text {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  height: 1.5em;
+}
+
+.c-split-str {
+  display: block;
+
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      $delay: $i / 40 + s;
+      transition: transform .5s cubic-bezier(.7, 0, .3, 1) $delay;
+    }
+  }
+
+  &--blank {
+    width: .25em;
+  }
+}
