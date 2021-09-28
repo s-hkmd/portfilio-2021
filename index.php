@@ -1,30 +1,25 @@
 <?php get_header(); ?>
-
-<section class="p-works-list js-horizontal-scroll">
-  <div class="p-works-list__main">
-    <div class="p-works-list__works-item">
-      <img class="js-image" src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
-    <div class="p-works-list__works-item">
-      <img src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
-    <div class="p-works-list__works-item">
-      <img src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
-    <div class="p-works-list__works-item">
-      <img src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
-    <div class="p-works-list__works-item">
-      <img src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
-    <div class="p-works-list__works-item">
-      <img src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
-    <div class="p-works-list__works-item">
-      <img src="https://picsum.photos/seed/picsum/200/300" alt="">
-    </div>
+<section class="p-works-list">
+  <div class="p-works-list__webgl-canvas">
+    <canvas class="p-works-list__webgl-canvas-body" id="webgl-canvas"></canvas>
+  </div>
+  <div class="p-works-list__works-list">
+    <a class="p-works-list__works-item" href="">
+      <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="" />
+    </a>
+    <a class="p-works-list__works-item" href="">
+      <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="" />
+    </a>
+    <a class="p-works-list__works-item" href="">
+      <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="" />
+    </a>
+    <a class="p-works-list__works-item" href="">
+      <img src="https://source.unsplash.com/whOkVvf0_hU/" alt="" />
+    </a>
   </div>
 </section>
+
+
 
 
 
