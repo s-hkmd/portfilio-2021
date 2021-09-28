@@ -1,5 +1,6 @@
 .p-top-kv {
   align-items: center;
+  background: var(--color-base);
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -38,7 +39,6 @@
   }
 
   &__slide-inner {
-    background: $baseColor;
     display: flex;
     width: max-content;
   }

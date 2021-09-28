@@ -1,6 +1,6 @@
 .p-works-detail {
   @include contentWidth;
-  background: $baseColor;
+  background: var(--color-base);
   color: #bbb;
   display: flex;
   padding: {
@@ -37,7 +37,7 @@
 
     &:after {
       content: '';
-      background: url('#{$themePass}icon_works_detail_info.svg') no-repeat center center / contain;
+      background: url('#{$image}icon_works_detail_info.svg') no-repeat center center / contain;
       padding: 0 8px;
       height: 12px;
       width: 12px;
@@ -51,7 +51,7 @@
 
     &:before {
       content: '';
-      background: url('#{$themePass}img_works_detail_break_line.svg') no-repeat center center / contain;
+      background: url('#{$image}img_works_detail_break_line.svg') no-repeat center center / contain;
       position: absolute;
       top: 0;
       transform: translateY(-50%);

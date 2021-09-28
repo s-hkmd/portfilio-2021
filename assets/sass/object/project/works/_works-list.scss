@@ -1,43 +1,29 @@
 .p-works-list {
-  position: fixed;
-  top: 0;
-  height: 100vh;
 
-  &__main {
-    align-items: center;
-    display: flex;
-    padding: 0 5vw;
-    height: 100%;
+  &__webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  &__works-list {
+    width: 80vw;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   &__works-item {
-    position: relative;
-    transition: transform .5s ease-out;
-    height: 477px;
-    width: 850px;
-
-    &:not(:last-child) {
-      margin-right: 200px;
-    }
+    display: block;
+    width: 100%;
+    height: 500px;
 
     img {
-      filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, .15));
-      transform-origin: center;
-      transition: transform 1s ease-out;
+      visibility: hidden;
       height: 100%;
       width: 100%;
-
-      &:hover {
-        transform: rotate(4deg);
-      }
-    }
-
-    &:nth-child(2n) img:hover {
-      transform: rotate(2deg);
-    }
-    
-    &:nth-child(3n) img:hover {
-      transform: rotate(-2deg);
     }
   }
 }

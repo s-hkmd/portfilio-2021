@@ -40,7 +40,7 @@
     left: 40px;
 
     &:after {
-      background: url('#{$themePass}icon_works_next_arrow.svg') no-repeat center center / contain;
+      background: url('#{$image}icon_works_next_arrow.svg') no-repeat center center / contain;
       content: '';
       margin-left: 10px;
       transition: transform .3s ease-out;
@@ -68,7 +68,7 @@
 
   &__circle-img {
     animation: bg_spin 60s linear infinite;
-    background: url('#{$themePass}img_works_next_circle.svg') no-repeat center center / contain;
+    background: url('#{$image}img_works_next_circle.svg') no-repeat center center / contain;
     transform-origin: center;
     height: 100%;
     width: 100%;

@@ -42,7 +42,7 @@
 
     &:after {
       content: '';
-      background: url('#{$themePass}icon_works_detail_kv_arrow.svg') no-repeat;
+      background: url('#{$image}icon_works_detail_kv_arrow.svg') no-repeat;
       mix-blend-mode: difference;
       transition: transform .5s ease-out;
       height: 40px;

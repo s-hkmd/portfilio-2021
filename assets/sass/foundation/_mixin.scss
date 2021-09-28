@@ -1,7 +1,5 @@
 /**
- *
- * Responsive
- *
+ * Media Query
  */
 @mixin pc {
   @media (min-width: 1081px) {
@@ -20,9 +18,7 @@
 }
 
 /**
- *
- * Content width
- *
+ * Content Width
  */
 @mixin contentWidth($pr: 10vw, $pl: 10vw) {
   padding: {

@@ -16,14 +16,15 @@ html {
 }
 body {
 	@include fontKozR;
-	background: $baseColor;
-	color: $basicColor;
+	background: var(--color-base);
+	color: var(--color-basic);
 	font-size: 14px;
 	-moz-font-feature-settings: "palt";
 	-webkit-font-feature-settings: "palt";
 	font-feature-settings: "palt";
 	-webkit-font-smoothing: antialiased;
 	letter-spacing: .075em;
+	overscroll-behavior: none;
 
 	.js-nav-open & {
 		overflow: hidden;
