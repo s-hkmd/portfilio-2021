@@ -4,7 +4,7 @@ uniform float uImageAspect;
 uniform float uPlaneAspect;
 uniform float uTime;
 
-void main(){
+void main() {
   // 画像のアスペクトとプレーンオブジェクトのアスペクトを比較し、短い方に合わせる
   vec2 ratio = vec2(
     min(uPlaneAspect / uImageAspect, 1.0),

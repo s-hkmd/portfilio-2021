@@ -21,7 +21,7 @@ const renterWorksItem = () => {
     h: window.innerHeight,
   };
 
-  const renderer = new THREE.WebGLRenderer({canvas: canvasEl});
+  const renderer = new THREE.WebGLRenderer({ canvas: canvasEl, alpha: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(canvasSize.w, canvasSize.h);
 
@@ -50,7 +50,6 @@ const renterWorksItem = () => {
     setParams() {
       // 参照するimg要素から大きさ、位置を取得してセット
       const rect = this.refImage.getBoundingClientRect();
-
       this.mesh.scale.x = rect.width;
       this.mesh.scale.y = rect.height;
 
@@ -61,7 +60,6 @@ const renterWorksItem = () => {
 
     update(offset) {
       this.setParams();
-
       this.mesh.material.uniforms.uTime.value = offset;
     }
   }
@@ -69,7 +67,6 @@ const renterWorksItem = () => {
   // Planeメッシュを作る関数
   const createMesh = (img) => {
     const texture = loader.load(img.src);
-
     const uniforms = {
       uTexture: { value: texture },
       uImageAspect: { value: img.naturalWidth / img.naturalHeight },
@@ -82,7 +79,6 @@ const renterWorksItem = () => {
       vertexShader: VS_Code,
       fragmentShader: FS_Code,
     });
-
     const mesh = new THREE.Mesh(geo, mat);
 
     return mesh;
@@ -116,7 +112,7 @@ const renterWorksItem = () => {
   // 毎フレーム呼び出す
   const loop = () => {
     updateScroll();
-    scrollArea.style.transform = `translate3d(0,${-currentScrollY}px,0)`;
+    scrollArea.style.transform = `translate3d(0, ${-currentScrollY}px, 0)`;
     for (const plane of imagePlaneArray) {
       plane.update(scrollOffset);
     }
