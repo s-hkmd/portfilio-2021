@@ -1,0 +1,29 @@
+/**
+ * Import Modules
+ */
+@use 'sass:math';
+
+/**
+ * Styles
+ */
+.js-split-text {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  height: 1.5em;
+}
+
+.c-split-str {
+  display: block;
+
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      $delay: math.div($i, 40);
+      transition: transform .5s cubic-bezier(.7, 0, .3, 1) #{$delay}s;
+    }
+  }
+
+  &--blank {
+    width: .25em;
+  }
+}

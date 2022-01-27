@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" class="js-home-enter">
 	<head>
-		<meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.svg" type="image/svg+xml" />
+		<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.svg" type="image/svg+xml">
     <!-- Web Font -->
     <script>
     (function(d) {
@@ -21,10 +21,19 @@
   <body>
     <div class="c-transition-mask"></div>
     <div data-barba="wrapper">
+      <?php
+        if (is_front_page()) {
+          $namespace = 'front-page';
+        } elseif (is_home()) {
+          $namespace = 'works-list';
+        } elseif (is_single()) {
+          $namespace = 'works-detail';
+        }
+      ?>
       <div
         id="<?php echo esc_attr($post->post_name); ?>"
         data-barba="container"
-        data-barba-namespace="<?php echo esc_attr($post->post_name); ?>"
+        data-barba-namespace="<?php echo $namespace; ?>"
         <?php body_class(); ?>
       >
         <!-- Header -->

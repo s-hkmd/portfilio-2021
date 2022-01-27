@@ -1,0 +1,12 @@
+.p-works-cover-img {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  z-index: map-get($z-index, works-cover-image);
+
+  &__main {
+    position: relative;
+    height: 120vh;
+  }
+}

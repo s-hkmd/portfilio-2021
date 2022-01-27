@@ -5,7 +5,7 @@
 add_action('wp_head','create_meta');
 
 function create_meta() {
-  if( is_front_page() || is_home() || is_singular() ){
+  if (is_front_page() || is_home() || is_singular()) {
     global $post;
     $meta_title = '';
     $meta_desc = '';
@@ -13,13 +13,18 @@ function create_meta() {
     $ogp_img = '';
     $insert = '';
 
-    if ( is_front_page() || is_home() ) {
-      //トップページ
+    if (is_front_page()) {
+      // トップページ
       $meta_title = get_bloginfo('name');
       $meta_desc = get_bloginfo('description');
       $ogp_url = home_url();
-    } elseif( is_singular() ) {
-      //投稿ページ＆固定ページ
+    } elseif(is_home()) {
+      // 投稿一覧ページ
+      $meta_title = 'Works | ' . get_bloginfo('name');
+      $meta_desc = '作品集';
+      $ogp_url = home_url() . '/works/';
+    } elseif(is_singular()) {
+      // 投稿ページ＆固定ページ
       setup_postdata($post);
       $meta_title = $post->post_title . ' | ' . get_bloginfo('name');
       $meta_desc = mb_substr(get_the_excerpt(), 0, 100);
@@ -28,14 +33,14 @@ function create_meta() {
     }
 
     //og:type
-    $ogp_type = ( is_front_page() || is_home() ) ? 'website' : 'article';
+    $ogp_type = (is_front_page() || is_home()) ? 'website' : 'article';
 
     //og:image
-    if ( is_singular() && has_post_thumbnail() ) {
+    if (is_singular() && has_post_thumbnail()) {
       $ps_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
       $ogp_img = $ps_thumb[0];
     } else {
-      $ogp_img = get_template_directory_uri() . '/assets/img/ogimage.jpg';
+      $ogp_img = get_template_directory_uri() . '/src/img/ogimage.jpg';
     }
 
     //出力するOGPタグ
@@ -64,7 +69,7 @@ function create_meta() {
  */
 // CSS
 function load_css() {
-  wp_enqueue_style('style', get_template_directory_uri() . '/style.css?t=' . date('Y-m-d H:i:s'));
+  wp_enqueue_style('style', get_template_directory_uri() . '/dist/css/style.css?t=' . date('Y-m-d H:i:s'));
 }
 add_action('wp_enqueue_scripts', 'load_css');
 
@@ -73,9 +78,9 @@ add_action('wp_enqueue_scripts', 'load_css');
  */
 add_filter('template_include','custom_search_template');
 function custom_search_template($template){
-  if ( is_search() ){
+  if (is_search()){
     $post_types = get_query_var('post_type');
-    foreach ( (array) $post_types as $post_type )
+    foreach ((array) $post_types as $post_type)
       $templates[] = "search-{$post_type}.php";
     $templates[] = 'search.php';
     $template = get_query_template('search',$templates);
@@ -123,7 +128,7 @@ add_theme_support('post-thumbnails');
  */
 add_theme_support('editor-style');
 add_editor_style('editor-style.css');
-function custom_editor_settings( $initArray ){
+function custom_editor_settings($initArray) {
   $initArray['body_class'] = 'editor-area';
   return $initArray;
 }
@@ -134,11 +139,11 @@ add_filter( 'tiny_mce_before_init', 'custom_editor_settings' );
  */
 function disable_visual_editor_in_page() {
 	global $typenow;
-	if( $typenow == 'page' ){
+	if ($typenow == 'page') {
 		add_filter('user_can_richedit', 'disable_visual_editor_filter');
 	}
 }
-function disable_visual_editor_filter(){
+function disable_visual_editor_filter() {
 	return false;
 }
 add_action('load-post.php', 'disable_visual_editor_in_page');
@@ -192,10 +197,10 @@ function get_mtime($format) {
  * ショートコードを外す
  */
 function stinger_noshotcode( $content ) {
-  if ( ! preg_match( '/\[.+?\]/', $content, $matches ) ) {
+  if (!preg_match( '/\[.+?\]/', $content, $matches)) {
     return $content;
   }
-  $content = str_replace( $matches[0], '', $content );
+  $content = str_replace($matches[0], '', $content);
   return $content;
 }
 
@@ -211,7 +216,7 @@ function wpautop_filter($content) {
   $post_type = get_post_type( $post->ID );
   if (in_array($post_type, $arr_types)) $remove_filter = true;
 
-  if ( $remove_filter ) {
+  if ($remove_filter) {
     remove_filter('the_content', 'wpautop');
     remove_filter('the_excerpt', 'wpautop');
   }
@@ -236,4 +241,25 @@ add_shortcode('myphp', 'my_php_Include');
 add_action('wp_enqueue_scripts', function() {
   wp_deregister_style('wp-block-library');
 });
+
+/**
+ * 画像URLから画像のサイズを取得
+ */
+function get_image_width_and_height($image_url){
+  $res = null;
+  //wp-contentディレクトリのパス：/var/www/html/example/wp-content
+  $wp_content_dir = WP_CONTENT_DIR;
+  //wp-contentディレクトリのURL：http://www.example.com/wp-content
+  $wp_content_url = content_url();
+  //URLをローカルパスに置換
+  $image_file = str_replace($wp_content_url, $wp_content_dir, $image_url);
+  //画像サイズを取得
+  $imagesize = getimagesize($image_file);
+  if ($imagesize) {
+    $res = array();
+    $res['width'] = $imagesize[0];
+    $res['height'] = $imagesize[1];
+    return $res;
+  }
+};
 ?>

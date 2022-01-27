@@ -1,0 +1,23 @@
+/**
+ * Foudation / Variable
+ *
+ * 変数とか
+ */
+
+// Image File Path
+$image: '../../src/img/';
+
+// Z-index
+$z-index: (
+  transition-mask: 6,
+  top-mask: 5,
+  cursor: 4,
+  header: 3,
+  gnav: 2,
+  top-kv: 1,
+  works-cover-image: 1,
+  works-design-detail: 1,
+  works-kv: 1,
+  works-next: 1,
+  works-list: -1,
+);

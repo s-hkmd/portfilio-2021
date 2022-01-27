@@ -1,0 +1,32 @@
+.p-top-mask {
+  align-items: center;
+  background: #1f1f1f;
+  clip-path: inset(0 100% 0 0);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: clip-path 1s cubic-bezier(.6, 0, 0, 1);
+  height: 100vh;
+  width: 100vw;
+  z-index: map-get($z-index, top-mask);
+
+  .js-home-enter & {
+    clip-path: inset(0 0 0 0);
+  }
+
+  &__text {
+    @include font-classico-r;
+    font-size: 18px;
+    mix-blend-mode: difference;
+    transition: opacity 1s ease-out .6s, transform 1s ease-out .6s;
+    opacity: 0;
+    transform: translateX(20px);
+
+    .js-home-loading & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

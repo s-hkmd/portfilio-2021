@@ -1,0 +1,60 @@
+/**
+ * Break Points
+ */
+$breakpoints: (
+  'sm': '(max-width: 399px)',
+  'md': '(max-width: 767px)',
+  'lg': '(max-width: 1080px)',
+  'xl': '(min-width: 1081px)'
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/**
+ * Content Width
+ */
+@mixin content-width($width: 1366px, $pr: 10vw, $pl: 10vw) {
+  @include mq(xl) {
+    margin: 0 auto;
+    padding: {
+      right: $pr;
+      left: $pl;
+    }
+    max-width: calc($width + $pr + $pl);
+  }
+
+
+  @include mq(lg) {
+    padding: {
+      right: 7vw;
+      left: 7vw;
+    }
+  }
+
+  @include mq(md) {
+    padding: {
+      right: 5vw;
+      left: 5vw;
+    }
+  }
+
+  @include mq(sm) {
+    padding: {
+      right: 3vw;
+      left: 3vw;
+    }
+  }
+}
+
+/**
+ * Disable :hover on touch devices
+ */
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
