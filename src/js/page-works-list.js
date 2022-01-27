@@ -14,15 +14,14 @@ import FS_Code from './shaders/shader.frag';
 /*
   Run Three.js
 ---------------------------------------------------*/
-const hoge = () => {
-
-  const canvasEl = document.getElementById('webgl-canvas');
+const renterWorksItem = () => {
+  const canvasEl = document.querySelector('#webgl-canvas');
   const canvasSize = {
     w: window.innerWidth,
     h: window.innerHeight,
   };
 
-  const renderer = new THREE.WebGLRenderer({ canvas: canvasEl });
+  const renderer = new THREE.WebGLRenderer({canvas: canvasEl});
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(canvasSize.w, canvasSize.h);
 
@@ -39,7 +38,6 @@ const hoge = () => {
   camera.position.z = dist;
 
   const scene = new THREE.Scene();
-
   const loader = new THREE.TextureLoader();
 
   // 画像をテクスチャにしたplaneを扱うクラス
@@ -118,13 +116,11 @@ const hoge = () => {
   // 毎フレーム呼び出す
   const loop = () => {
     updateScroll();
-
     scrollArea.style.transform = `translate3d(0,${-currentScrollY}px,0)`;
     for (const plane of imagePlaneArray) {
       plane.update(scrollOffset);
     }
     renderer.render(scene, camera);
-
     requestAnimationFrame(loop);
   };
 
@@ -152,24 +148,21 @@ const hoge = () => {
   };
 
   const main = () => {
-    window.addEventListener('load', () => {
-      const imageArray = [...document.querySelectorAll('img')];
-      for (const img of imageArray) {
-        const mesh = createMesh(img);
-        scene.add(mesh);
+    const imageArray = [...document.querySelectorAll('img')];
+    for (const img of imageArray) {
+      const mesh = createMesh(img);
+      scene.add(mesh);
 
-        const imagePlane = new ImagePlane(mesh, img);
-        imagePlane.setParams();
+      const imagePlane = new ImagePlane(mesh, img);
+      imagePlane.setParams();
 
-        imagePlaneArray.push(imagePlane);
-      }
-      loop();
-    });
+      imagePlaneArray.push(imagePlane);
+    }
+    loop();
 
     // リサイズ（負荷軽減のためリサイズが完了してから発火する）
     window.addEventListener('resize', () => {
       if (timeoutId) clearTimeout(timeoutId);
-
       timeoutId = setTimeout(resize, 200);
     });
   };
@@ -185,5 +178,5 @@ const hoge = () => {
  */
 export const initWorksList = () => {
   // Render WebGL
-  hoge();
+  renterWorksItem();
 };
