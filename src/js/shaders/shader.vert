@@ -12,7 +12,7 @@ void main() {
   float freq = 0.01 * uTime; // 振動数（の役割） 大きくすると波が細かくなる
 
   // 縦方向
-  float tension = -0.001 * uTime; // 上下の張り具合
+  float tension = -0.0005 * uTime; // 上下の張り具合
 
   pos.x = pos.x + sin(pos.y * PI  * freq) * amp;
   pos.y = pos.y + (cos(pos.x * PI) * tension);

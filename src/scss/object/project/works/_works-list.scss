@@ -1,3 +1,11 @@
+/**
+ * Import Modules
+ */
+@use 'sass:math';
+
+/**
+ * Styles
+ */
 .p-works-list {
 
   &__webgl-canvas {
@@ -6,19 +14,43 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: map-get($z-index, works-list);
+    z-index: -1;
   }
 
   &__works-list {
-    width: 80vw;
-    max-width: 1000px;
-    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  &__works-list-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__works-list-inner {
+    @include content-width;
+    display: grid;
+    gap: 240px;
+    grid-template-columns: 1fr;
+    padding: {
+      top: 180px;
+      bottom: 200px;
+    }
+    place-items: center;
   }
 
   &__works-item {
-    display: block;
-    width: 100%;
-    height: 500px;
+    position: relative;
+    width: 77.782%;
+  }
+
+  &__works-item-image {
+    display: flex;
 
     img {
       visibility: hidden;
@@ -26,4 +58,100 @@
       width: 100%;
     }
   }
+
+  &__works-item-title {
+    @include font-classico-r;
+    display: block;
+    color: #bbb;
+    font-size: 24px;
+    padding-top: 15px;
+  }
+
+  &__flow-text {
+    display: grid;
+    overflow: hidden;
+    place-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: rotate(5deg);
+    height: 100vh;
+    width: 100vw;
+    z-index: -2;
+  }
+
+  &__flow-text-inner {
+    display: flex;
+    width: max-content;
+  }
+
+  &__flow-text-item {
+    $duration: 80;
+    @include font-classico-r;
+    animation: scroll_x_01 #{$duration}s #{0 - math.div($duration, 2)}s linear infinite;
+    backface-visibility: hidden;
+    color: transparent;
+    font-size: 300px;
+    padding-left: 0.5em;
+    -webkit-text-stroke: 1px #fff;
+    transition: opacity .15s cubic-bezier(.6, 0, 0, 1);
+    height: 1.2em;
+    will-change: transform;
+
+    &:nth-child(2) {
+      animation: scroll_x_02 #{$duration}s linear infinite;
+    }
+
+    .is-changed & {
+      opacity: 0;
+    }
+  }
+
+  &__more-works {
+    @include font-classico-r;
+    background: #1f1f1f;
+    color: #bbb;
+    display: grid;
+    font-size: 42px;
+    place-items: center;
+    position: relative;
+    transition: background .5s cubic-bezier(.6, 0, 0, 1);
+    height: 100vh;
+    width: 100vw;
+
+    &::before {
+      background: url('https://assets.website-files.com/5f46be79ccba858e2c52df60/5f496277cfe39c923f0dd877_Collage_Kenoz.jpg') no-repeat center center / cover;
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: calc(100% - 1px);
+      width: 100%;
+      z-index: -1;
+    }
+
+    @include hover {
+      &:hover {
+        background: rgba(#1f1f1f, .8);
+      }
+    }
+  }
+}
+
+@keyframes scroll_x_01 {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes scroll_x_02 {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-200%);
+	}
 }

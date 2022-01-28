@@ -14,7 +14,7 @@ import FS_Code from './shaders/shader.frag';
 /*
   Run Three.js
 ---------------------------------------------------*/
-const renterWorksItem = () => {
+const renderWorksItem = () => {
   const canvasEl = document.querySelector('#webgl-canvas');
   const canvasSize = {
     w: window.innerWidth,
@@ -167,6 +167,58 @@ const renterWorksItem = () => {
 };
 
 /*
+  Flow Text
+---------------------------------------------------*/
+/**
+ * スクロールに応じてtransformを可変
+ */
+const worksDetailFlowText = () => {
+  window.addEventListener('scroll', () => {
+    const scrolled = document.documentElement.scrollTop;
+  
+    // デザインの画像のとこのデカめな文字
+    const flow_text = document.querySelector('#js-works-flow-text');
+    if (flow_text) {
+      flow_text.setAttribute('style', `transform: translateX(${0 - scrolled * 0.005}%); transition: transform .3s ease-out;`);
+    }
+  });
+};
+
+/**
+ * 文字を変更
+ */
+const transformWorksTitle = () => {
+  const works_items = document.querySelectorAll('[data-title]');
+  const flow_text = document.querySelectorAll('.p-works-list__flow-text-item');
+  const flow_text_parent = document.querySelector('#js-works-flow-text');
+  const changed_class = 'is-changed';
+
+  const changeText = entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // 一時的にクラスを付与
+        flow_text_parent.classList.add(changed_class);
+        setTimeout(() => flow_text_parent.classList.remove(changed_class), 150);
+
+        // テキストを置換
+        for (const text of flow_text) {
+          setTimeout(() => text.textContent = entry.target.dataset.title, 150);
+        }
+      }
+    });
+  };
+
+  const options = {
+    root: null,
+    rootMargin: '-50% 0px',
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver(changeText, options);
+  works_items.forEach(item => observer.observe(item));
+};
+
+/*
   Initialize
 ---------------------------------------------------*/
 /**
@@ -174,5 +226,7 @@ const renterWorksItem = () => {
  */
 export const initWorksList = () => {
   // Render WebGL
-  renterWorksItem();
+  renderWorksItem();
+  worksDetailFlowText();
+  transformWorksTitle();
 };
