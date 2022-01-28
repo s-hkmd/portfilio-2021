@@ -202,7 +202,7 @@ const transformWorksTitle = () => {
 
         // テキストを置換
         for (const text of flow_text) {
-          setTimeout(() => text.textContent = entry.target.dataset.title, 150);
+          setTimeout(() => text.textContent = `${entry.target.dataset.title} ${entry.target.dataset.title}`, 150);
         }
       }
     });
