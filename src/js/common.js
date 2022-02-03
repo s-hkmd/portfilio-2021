@@ -44,6 +44,13 @@ const initViewport = () => {
   head.prepend(view_port_meta);
 };
 
+/**
+ * ページリロード時にHTMLタグにクラスを付与
+ */
+window.addEventListener('load', () => {
+  html.classList.remove('js-page-leave');
+});
+
 /*
   Cursor
 ---------------------------------------------------*/
@@ -196,7 +203,7 @@ barba.init({
       // HTMLタグからクラスを削除
       setTimeout(() => {
         html.classList.remove('js-page-leave');
-      }, 1000);
+      }, 700);
     }
   }],
   views: [

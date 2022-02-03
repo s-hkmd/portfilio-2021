@@ -29,6 +29,7 @@
   }
 
   &__slide {
+    animation: rotate_kv_flow_text 90s ease-in-out infinite;
     clip-path: inset(0 0 0 0);
     overflow: hidden;
     transition: clip-path 1s cubic-bezier(.8, 0, .3, 1) 1s;
@@ -49,10 +50,10 @@
     backface-visibility: hidden;
     color: transparent;
     font-size: 180px;
+    line-height: 1em;
     mix-blend-mode: difference;
     padding-left: 40px;
     -webkit-text-stroke: 1px #fff;
-    // text-stroke: 1px #fff;
     height: 1.2em;
     will-change: transform;
 
@@ -60,6 +61,11 @@
       animation: scroll_x_02 120s linear infinite;
     }
   }
+}
+
+@keyframes rotate_kv_flow_text {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
 }
 
 @keyframes scroll_x_01 {

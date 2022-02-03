@@ -1,9 +1,8 @@
 .p-top-mask {
-  align-items: center;
   background: #1f1f1f;
   clip-path: inset(0 100% 0 0);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   position: fixed;
   top: 0;
   left: 0;

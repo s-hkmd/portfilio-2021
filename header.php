@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="js-home-enter">
+<html lang="ja" class="js-home-enter js-page-leave">
 	<head>
 		<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

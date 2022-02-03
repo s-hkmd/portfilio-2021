@@ -11,13 +11,13 @@
 
 
   @for $i from 1 through 10 {
-    & > *:nth-child(#{$i}):not(.js-horizontal-scroll) {
+    & > *:nth-child(#{$i}) {
       $delay: math.div($i, 10);
-      transition: all 1s cubic-bezier(.7, 0, .3, 1) #{$delay}s;
+      transition: all .75s cubic-bezier(.7, 0, .3, 1) #{$delay}s;
 
       .js-page-leave & {
-        transform: translateX(20px);
         opacity: 0;
+        // transform: translateX(3%);
       }
     }
   }

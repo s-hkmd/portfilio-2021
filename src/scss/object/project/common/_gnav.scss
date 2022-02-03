@@ -43,8 +43,15 @@
       margin-bottom: 20px;
     }
 
-    &:hover {
+    @include hover {
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &--current {
       color: #fff;
+      pointer-events: none;
     }
 
     & .c-split-str {
@@ -85,8 +92,8 @@
     @for $i from 1 through 3 {
       &:nth-child(#{$i}) {
         $delay: math.div($i, 9);
-        transition: opacity 1s ease-in-out $delay, transform 1s ease-in-out #{$delay}s;
-  
+        transition: opacity 1s ease-in-out #{$delay}s, transform 1s ease-in-out #{$delay}s;
+
         .js-page-leave & {
           opacity: 0;
           transform: translateY(-20px);
