@@ -16,6 +16,9 @@ module.exports = {
     path: path.resolve(__dirname, './dist/'), // 出力先フォルダを絶対パスで指定
     filename: 'js/[name].js' // [name]にはentry:で指定したキーが入る
   },
+  cache: {
+    type: 'filesystem',
+  },
   module: {
     rules: [
       {
