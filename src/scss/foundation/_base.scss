@@ -26,7 +26,7 @@ body {
 	font-feature-settings: "palt";
 	-webkit-font-smoothing: antialiased;
 	letter-spacing: .075em;
-	overscroll-behavior: none;
+	overscroll-behavior-y: none;
 
 	.js-nav-open & {
 		overflow: hidden;
