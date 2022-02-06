@@ -1,4 +1,5 @@
 .p-works-kv {
+  background: #2c2c36;
   height: 100vh;
   width: 100vw;
 
@@ -9,7 +10,7 @@
     width: 100%;
 
     &:after {
-      background: #2C2C36;
+      background: #2c2c36;
       content: '';
       mix-blend-mode: multiply;
       position: absolute;
