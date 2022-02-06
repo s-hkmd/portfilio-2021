@@ -5,6 +5,5 @@
   $parent_slug = get_post($parent_id)->post_name; // 親ページのスラッグを取得
 ?>
 <?php get_header(); ?>
-
 <?php the_content(); ?>
 <?php get_footer(); ?>
