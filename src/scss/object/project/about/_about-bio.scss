@@ -55,6 +55,7 @@
 
   &__image {
     $offset: $section-padding-top + $section-padding-bottom;
+    box-shadow: 30px 30px 30px rgba(#000, .1);
     display: flex;
     position: absolute;
     top: $section-padding-top;
