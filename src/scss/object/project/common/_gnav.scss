@@ -131,22 +131,22 @@
 }
 
 @keyframes link_anm_1 {
-	from {
-		transform-origin: right;
-		transform: scaleX(1);
-	}
-	to {
-		transform-origin: right;
-		transform: scaleX(0);
-	}
+  from {
+    transform-origin: right;
+    transform: scaleX(1);
+  }
+  to {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
 }
 @keyframes link_anm_2 {
-	from {
-		transform-origin: left;
-		transform: scaleX(0);
-	}
-	to {
-		transform-origin: left;
-		transform: scaleX(1);
-	}
+  from {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  to {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
 }

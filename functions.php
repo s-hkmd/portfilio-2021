@@ -138,13 +138,13 @@ add_filter( 'tiny_mce_before_init', 'custom_editor_settings' );
  * ビジュアルエディタを非表示にする
  */
 function disable_visual_editor_in_page() {
-	global $typenow;
-	if ($typenow == 'page') {
-		add_filter('user_can_richedit', 'disable_visual_editor_filter');
-	}
+  global $typenow;
+  if ($typenow == 'page') {
+    add_filter('user_can_richedit', 'disable_visual_editor_filter');
+  }
 }
 function disable_visual_editor_filter() {
-	return false;
+  return false;
 }
 add_action('load-post.php', 'disable_visual_editor_in_page');
 add_action('load-post-new.php', 'disable_visual_editor_in_page');

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" class="js-home-enter js-page-leave">
-	<head>
-		<meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.svg" type="image/svg+xml">
     <!-- Web Font -->
     <script>
     (function(d) {
@@ -17,7 +17,7 @@
     })(document);
   </script>
   <?php wp_head(); ?>
-	</head>
+  </head>
   <body>
     <div class="c-transition-mask"></div>
     <div data-barba="wrapper">
