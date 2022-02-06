@@ -1,0 +1,90 @@
+/**
+ * Import Modules
+ */
+@use 'sass:math';
+
+/**
+ * Styles
+ */
+.p-about-works {
+  align-items: center;
+  background: #bbb;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+
+  &__thumb {
+    aspect-ratio: 1.618 / 1;
+    display: flex;
+    position: absolute;
+    transition: transform .5s ease-out;
+    width: 60vw;
+    z-index: map-get($z-index, works-next);
+
+    img {
+      filter: drop-shadow(30px 30px 30px rgba(38, 40, 46, .4));
+      transform: rotate(8deg);
+      transform-origin: center;
+      transition: transform 1s ease-out;
+      height: 100%;
+      width: 100%;
+
+      @include hover {
+        &:hover {
+          transform: rotate(4deg);
+        }
+      }
+    }
+  }
+
+  &__text {
+    @include font-classico-r;
+    align-items: center;
+    display: flex;
+    font-size: 24px;
+    mix-blend-mode: difference;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+
+    &::after {
+      background: url('#{$image}icon_works_next_arrow.svg') no-repeat center center / contain;
+      content: '';
+      margin-left: 10px;
+      transition: transform .3s ease-out;
+      height: 30px;
+      width: 30px;
+
+      .p-about-works__thumb:hover ~ & {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  &__circle {
+    mix-blend-mode: difference;
+    position: absolute;
+    transform-origin: center;
+    transition: transform .5s cubic-bezier(.9, 0, .4, 1);
+    height: 65.5vw;
+    width: 65.5vw;
+
+    .p-about-works__thumb:hover + & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__circle-img {
+    animation: bg_spin 60s linear infinite;
+    background: url('#{$image}img_works_next_circle.svg') no-repeat center center / contain;
+    transform-origin: center;
+    height: 100%;
+    width: 100%;
+  }
+}

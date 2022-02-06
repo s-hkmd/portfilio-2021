@@ -1,0 +1,70 @@
+.p-about-bio {
+  @include content-width;
+  $section-padding-top: 100px;
+  $section-padding-bottom: 150px;
+  background: var(--color-base);
+  margin-bottom: 100vh;
+  padding: {
+    top: $section-padding-top;
+    bottom: $section-padding-bottom;
+  }
+  position: relative;
+
+  &__head {
+    mix-blend-mode: exclusion;
+    padding-top: 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__name {
+    display: flex;
+
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @include font-classico-r;
+    color: #bbb;
+    display: block;
+    font-size: 24px;
+    padding-top: 35px;
+  }
+
+  &__detail {
+    align-items: flex-end;
+    color: #bbb;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    padding-top: 50px;
+  }
+
+  &__overview {
+    display: block;
+    line-height: 2.5em;
+  }
+
+  &__profile {
+    width: 22%;
+  }
+
+  &__image {
+    $offset: $section-padding-top + $section-padding-bottom;
+    display: flex;
+    position: absolute;
+    top: $section-padding-top;
+    left: 50%;
+    transform: translateX(-50%);
+    height: calc(100% - $offset);
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

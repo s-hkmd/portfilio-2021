@@ -19,7 +19,10 @@ $breakpoints: (
  */
 @mixin content-width($width: 1366px, $pr: 10vw, $pl: 10vw) {
   @include mq(xl) {
-    margin: 0 auto;
+    margin: {
+      right: auto;
+      left: auto;
+    }
     padding: {
       right: $pr;
       left: $pl;

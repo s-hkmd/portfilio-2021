@@ -1,0 +1,106 @@
+/**
+ * Import Modules
+ */
+@use 'sass:math';
+
+/**
+ * Styles
+ */
+.p-about-message {
+  @include content-width;
+  align-items: flex-end;
+  background: var(--color-base);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__main-left {
+    padding: {
+      right: 100px;
+      bottom: 80px;
+    }
+  }
+
+  &__heading-line1,
+  &__heading-line2 {
+    color: #bbb;
+    display: inline-block;
+    font-size: 28px;
+    overflow: hidden;
+    padding-bottom: 5px;
+    position: relative;
+
+    &::after {
+      content: '';
+      background: #bbb;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s cubic-bezier(.7, 0, .3, 1);
+      height: 1px;
+      width: 100%;
+    }
+
+    .is-visible &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__heading-line2 {
+    padding-top: 15px;
+
+    &::after {
+      transition-delay: .15s;
+    }
+  }
+
+  &__split-str {
+    display: inline-block;
+    transform: translateY(110%);
+
+    @for $i from 1 through 20 {
+      $delay: math.div($i, 40);
+
+      .p-about-message__heading-line1 &:nth-child(#{$i}) {
+        transition: transform .75s cubic-bezier(.7, 0, .3, 1) #{$delay}s;
+      }
+
+      .p-about-message__heading-line2 &:nth-child(#{$i}) {
+        transition: transform .75s cubic-bezier(.7, 0, .3, 1) #{$delay + 0.15}s;
+      }
+    }
+
+    .is-visible & {
+      transform: translateY(0);
+    }
+  }
+
+  &__message {
+    padding-top: 70px;
+  }
+
+  &__message-line {
+    color: #bbb;
+
+    & + & {
+      padding-top: 30px;
+    }
+  }
+
+  &__main-right {
+    border: 1px solid #999;
+    border-radius: 999px;
+    padding: 15px;
+  }
+
+  &__image-wrap {
+    overflow: hidden;
+    border-radius: 999px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

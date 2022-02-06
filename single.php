@@ -1,14 +1,15 @@
 <?php get_header(); ?>
 
-<!-- Works kv -->
-<section class="p-works-kv">
+<!-- Works KV -->
+<div class="p-works-kv">
   <div class="p-works-kv__wrap" id="js-works-kv" style="background: url('<?php echo get_the_post_thumbnail_url(); ?>') no-repeat center center / cover;">
     <a class="p-works-kv__scroll-down" href="#detail"></a>
   </div>
-</section>
-<!-- /.Works kv -->
-<!-- Works detail -->
-<section class="p-works-detail" id="detail">
+</div>
+<!-- /Works KV -->
+
+<!-- Works Detail -->
+<div class="p-works-detail" id="detail">
   <div class="p-works-detail__main-left">
     <h1 class="p-works-detail__works-ttl"><?php the_field('works_title'); ?></h1>
     <div class="p-works-detail__works-info">
@@ -34,19 +35,21 @@
   <div class="p-works-detail__main-right">
     <p class="p-works-detail__works-dsc"><?php the_field('works_dsc'); ?></p>
   </div>
-</section>
-<!-- /.Works detail -->
-<!-- Cover image -->
-<section class="p-works-cover-img">
+</div>
+<!-- /Works Detail -->
+
+<!-- Cover Image -->
+<div class="p-works-cover-img">
   <div class="p-works-cover-img__main" id="js-works-cover-image" style="background: url('<?php the_field('works_cover_img'); ?>') no-repeat center center / cover;"></div>
-</section>
-<!-- /.Cover image -->
-<!-- Design detail -->
-<section class="p-works-design-detail">
+</div>
+<!-- /Cover Image -->
+
+<!-- Design Detail -->
+<div class="p-works-design-detail">
   <div class="p-works-design-detail__head">
     <div class="p-works-design-detail__head-inner" id="js-flow-text">
-      <span class="p-works-design-detail__head-text">Design detail * Design detail *</span>
-      <span class="p-works-design-detail__head-text">Design detail * Design detail *</span>
+      <span class="p-works-design-detail__head-text">Design Detail * Design Detail *</span>
+      <span class="p-works-design-detail__head-text">Design Detail * Design Detail *</span>
     </div>
   </div>
   <div class="p-works-design-detail__main">
@@ -111,10 +114,11 @@
       </div>
     <?php endif; ?>
   </div>
-</section>
-<!-- /.Design detail -->
-<!-- Next project -->
-<section class="p-works-next">
+</div>
+<!-- /Design Detail -->
+
+<!-- Next Project -->
+<div class="p-works-next">
   <?php
     $next_post = get_next_post();
     $next_post_title = $next_post->post_title;
@@ -154,7 +158,8 @@
   <div class="p-works-next__circle">
     <div class="p-works-next__circle-img"></div>
   </div>
-  <span class="p-works-next__text">Next project</span>
-</section>
-<!-- /.Next project -->
+  <span class="p-works-next__text">Next Project</span>
+</div>
+<!-- /Next Project -->
+
 <?php get_footer(); ?>

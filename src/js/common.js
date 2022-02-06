@@ -10,6 +10,7 @@ import barba from '@barba/core';
 import { splitString } from './modules/split_string.module';
 
 import { initFrontPage } from './front-page';
+import { initAboutPage } from './about';
 import { initWorksList } from './page-works-list';
 import { initWorksDetail } from './page-works-detail';
 
@@ -212,6 +213,12 @@ barba.init({
       beforeEnter() {
         console.log('Front Page');
         initFrontPage();
+      }
+    }, {
+      namespace: 'about',
+      beforeEnter() {
+        console.log('About Page');
+        initAboutPage();
       }
     }, {
       namespace: 'works-list',

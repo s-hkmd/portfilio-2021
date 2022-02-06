@@ -1,0 +1,118 @@
+/**
+ * Import Modules
+ */
+@use 'sass:math';
+
+/**
+ * Styles
+ */
+.p-about-kv {
+  @include content-width;
+  align-items: flex-end;
+  background: var(--color-base);
+  display: grid;
+  height: 100vh;
+
+  &__wrap {
+    padding-bottom: 10.5vh;
+  }
+
+  &__line {
+    @include font-classico-r;
+    color: #bbb;
+    display: inline-block;
+    width: max-content;
+
+    &:not(.-line5) {
+      font-size: 8.85vw;
+      // font-size: 120px;
+      margin-bottom: -0.3em;
+      overflow: hidden;
+      transform: rotateX(0deg);
+      transform-origin: center bottom;
+      height: 1.2em;
+    }
+
+    &.-line1 {
+      margin-left: 20%;
+    }
+
+    &.-line2 {
+      margin-left: -1%;
+    }
+
+    &.-line3 {
+      margin-left: auto;
+    }
+
+    &.-line3 {
+      margin-left: 32.6%;
+    }
+
+    &.-line4 {
+      margin-left: 10.5%;
+    }
+
+    &.-line5 {
+      align-items: center;
+      display: flex;
+      font-size: 24px;
+      margin-left: 71%;
+      padding-top: 40px;
+
+      &::before {
+        content: '';
+        background: #949498;
+        margin-right: 20px;
+        height: 1px;
+        width: 60px;
+      }
+    }
+
+    @for $i from 1 through 6 {
+      &.-line#{$i} {
+        $delay: math.div($i, 8);
+        transition-property: transform, opacity;
+        transition-duration: 1.2s;
+        transition-timing-function: cubic-bezier(.26, 1, .48, 1);
+        transition-delay: #{$delay}s;
+      }
+    }
+
+    .js-page-leave &.-line1,
+    .js-page-leave &.-line3 {
+      transform: rotateX(-90deg) rotateY(5deg);
+    }
+
+    .js-page-leave &.-line2,
+    .js-page-leave &.-line4 {
+      transform: rotateX(-90deg) rotateY(-5deg);
+    }
+
+    .js-page-leave &.-line5 {
+      opacity: 0;
+    }
+  }
+
+  &__split-str {
+    display: inline-block;
+    line-height: 0.8em;
+    transform: translateY(0);
+    vertical-align: top;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        $delay: math.div($i, 40);
+        transition: transform 1.25s cubic-bezier(.26, 1, .48, 1) #{$delay}s;
+      }
+    }
+
+    &--blank {
+      width: .25em;
+    }
+
+    .js-page-leave & {
+      transform: translateY(1.2em);
+    }
+  }
+}

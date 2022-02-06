@@ -28,6 +28,8 @@
           $namespace = 'works-list';
         } elseif (is_single()) {
           $namespace = 'works-detail';
+        } elseif (is_page('about')) {
+          $namespace = 'about';
         }
       ?>
       <div

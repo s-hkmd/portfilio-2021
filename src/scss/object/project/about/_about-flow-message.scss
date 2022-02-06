@@ -1,0 +1,46 @@
+.p-about-flow-message {
+  background: var(--color-base);
+  overflow: hidden;
+  padding-top: 40px;
+  
+  &__item {
+    display: flex;
+    width: max-content;
+
+    &:nth-child(2) {
+      margin-top: -60px;
+    }    
+  }
+
+  &__text {
+    @include font-classico-r;
+    animation: message_scroll_01 120s -60s linear infinite;
+    backface-visibility: hidden;
+    color: #33333e;
+    font-size: 200px;
+    padding-left: 0.25em;
+    will-change: transform;
+
+    &:nth-child(2) {
+      animation: message_scroll_02 120s linear infinite;
+    }
+    
+    .p-about-flow-message__item:nth-child(even) & {
+      animation: message_scroll_01 120s -60s linear reverse infinite;
+
+      &:nth-child(2) {
+        animation: message_scroll_02 120s linear reverse infinite;
+      }
+    }
+  }
+}
+
+@keyframes message_scroll_01 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes message_scroll_02 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-200%); }
+}
