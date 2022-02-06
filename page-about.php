@@ -79,6 +79,7 @@
   <div class="p-about-bio__image">
     <img
       src="<?php echo get_template_directory_uri(); ?>/src/img/img_about_bio.jpg"
+      id="js-bio-image"
       alt="Hi! I'm Sho Hakamada :)"
       height="574"
       width="420"

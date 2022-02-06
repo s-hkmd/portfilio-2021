@@ -8,7 +8,6 @@
 ---------------------------------------------------*/
 import { splitString } from './modules/split_string.module';
 import simpleParallax from 'simple-parallax-js';
-import { DoubleSide } from 'three';
 
 /*
   KV Section
