@@ -20,12 +20,25 @@
   z-index: -1;
 
   &__thumb {
-    aspect-ratio: 1.618 / 1;
     display: flex;
     position: absolute;
     transition: transform .5s ease-out;
-    width: 60vw;
     z-index: map-get($z-index, works-next);
+
+    &--web {
+      aspect-ratio: 1.778 / 1;
+      width: 63vw;
+    }
+
+    &--logo {
+      aspect-ratio: 1 / 1;
+      width: 45vw;
+    }
+
+    &--graphic {
+      aspect-ratio: 1.618 / 1;
+      width: 60vw;
+    }
 
     img {
       filter: drop-shadow(30px 30px 30px rgba(38, 40, 46, .4));

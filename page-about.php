@@ -97,16 +97,31 @@
       'posts_per_page' => '1',
     ));
     if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the_post();
+    $categories = get_the_category($post->ID);
+    $next_category = $categories[0]->slug;
   ?>
-    <a class="p-about-works__thumb" id="js-works-thumbnail" href="<?php the_permalink(); ?>">
-      <img
-        src="<?php the_field('works_img_1'); ?>"
-        alt="<?php the_title(); ?>"
-        height="512"
-        width="820"
-        loading="lazy"
-        decoding="async"
-      >
+    <a
+      class="p-about-works__thumb <?php echo 'p-works-next__thumb--' . $next_category; ?>"
+      id="js-works-thumbnail"
+      href="<?php the_permalink(); ?>"
+    >
+      <?php if(has_post_thumbnail()): ?>
+        <?php
+          the_post_thumbnail('large', array(
+            'alt' => get_the_title(),
+            'decoding' => 'async',
+          ));
+        ?>
+      <?php else: ?>
+        <img
+          src="<?php the_field('works_img_1'); ?>"
+          alt="<?php the_title(); ?>"
+          height="512"
+          width="820"
+          loading="lazy"
+          decoding="async"
+        >
+      <?php endif; ?>
     </a>
   <?php endwhile; endif; wp_reset_postdata(); ?>
   <div class="p-about-works__circle">
