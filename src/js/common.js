@@ -231,10 +231,13 @@ barba.init({
       }
     },  {
       namespace: 'works-detail',
-      beforeEnter() {
-        console.log('Works Detail');
-        initWorksDetail();
-      }
+      afterEnter() {
+        setTimeout(() => {
+          console.log('Works Detail');
+          console.log('is loaded');
+          initWorksDetail();
+        }, 100);
+      },
     }
   ],
 });

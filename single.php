@@ -125,18 +125,27 @@
     if(!empty($next_post)):
   ?>
     <a class="p-works-next__thumb" id="js-next-thumbnail" href="<?php echo esc_url(get_permalink($next_post->ID)); ?>">
-      <img
-        src="<?php echo wp_get_attachment_url(get_post_meta($next_post->ID, 'works_img_1', true)); ?>"
-        alt="<?php echo $next_post_title; ?>"
-        height="512"
-        width="820"
-        loading="lazy"
-        decoding="async"
-      >
+      <?php if(has_post_thumbnail()): ?>
+        <?php
+          echo get_the_post_thumbnail($next_post->ID, 'large', array(
+            'alt' => $next_post_title,
+            'decoding' => 'async',
+          ));
+        ?>
+      <?php else: ?>
+        <img
+          src="<?php echo wp_get_attachment_url(get_post_meta($next_post->ID, 'works_img_1', true)); ?>"
+          alt="<?php echo $next_post_title; ?>"
+          height="512"
+          width="820"
+          loading="lazy"
+          decoding="async"
+        >
+      <?php endif; ?>
     </a>
   <?php else: ?>
     <?php
-      $the_query = new WP_Query( array(
+      $the_query = new WP_Query(array(
         'orderby' =>  'date',
         'order' =>  'ASC',
         'posts_per_page' => '1',
@@ -144,14 +153,23 @@
       if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the_post();
     ?>
       <a class="p-works-next__thumb" href="<?php the_permalink(); ?>">
-        <img
-          src="<?php the_field('works_img_1'); ?>"
-          alt="<?php the_title(); ?>"
-          height="512"
-          width="820"
-          loading="lazy"
-          decoding="async"
-        >
+        <?php if(has_post_thumbnail()): ?>
+          <?php
+            the_post_thumbnail('large', array(
+              'alt' => get_the_title(),
+              'decoding' => 'async',
+            ));
+          ?>
+        <?php else: ?>
+          <img
+            src="<?php the_field('works_img_1'); ?>"
+            alt="<?php the_title(); ?>"
+            height="512"
+            width="820"
+            loading="lazy"
+            decoding="async"
+          >
+        <?php endif; ?>
       </a>
       <?php endwhile; endif; wp_reset_postdata(); ?>
   <?php endif; ?>

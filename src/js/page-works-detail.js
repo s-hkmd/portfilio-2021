@@ -4,6 +4,41 @@
  */
 
 /*
+  KV Section
+---------------------------------------------------*/
+/**
+ * 一定量スクロールでKVのz-indexを-2に変更
+ */
+const zindex = () => {
+  /**
+   * 変数・定数
+   */
+  const kv = document.querySelector('.p-works-kv');
+
+  /**
+   * z-index操作関数
+   * 
+   * @param {Object} entries
+   */
+  const changeZindex = entries => {
+    entries.forEach(entry => {
+      kv.style.zIndex = entry.isIntersecting ? 'unset' : '-2';
+    });
+  }
+
+  /**
+   * Intersection Observerで交差を監視
+   */
+  const options = {
+    root: null,
+    rootMargin: '100% 0px 0px',
+    threshold: 0
+  };
+  const observer = new IntersectionObserver(changeZindex, options);
+  if (kv) observer.observe(kv);
+};
+
+/*
   エフェクトまわり
 ---------------------------------------------------*/
 /**
@@ -75,6 +110,7 @@ const nextWorksMouseHover = () => {
  * 初期化
  */
 export const initWorksDetail = () => {
+  zindex();
   parallax();
   nextWorksMouseHover();
 };
