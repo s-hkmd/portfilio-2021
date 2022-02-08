@@ -122,19 +122,26 @@
   <?php
     $next_post = get_next_post();
     $next_post_title = $next_post->post_title;
+    $next_post_id = $next_post->ID;
+    $categories = get_the_category($next_post_id);
+    $next_category = $categories[0]->slug;
     if(!empty($next_post)):
   ?>
-    <a class="p-works-next__thumb" id="js-next-thumbnail" href="<?php echo esc_url(get_permalink($next_post->ID)); ?>">
+    <a
+      class="p-works-next__thumb <?php echo 'p-works-next__thumb--' . $next_category; ?>"
+      id="js-next-thumbnail"
+      href="<?php echo esc_url(get_permalink($next_post_id)); ?>"
+    >
       <?php if(has_post_thumbnail()): ?>
         <?php
-          echo get_the_post_thumbnail($next_post->ID, 'large', array(
+          echo get_the_post_thumbnail($next_post_id, 'large', array(
             'alt' => $next_post_title,
             'decoding' => 'async',
           ));
         ?>
       <?php else: ?>
         <img
-          src="<?php echo wp_get_attachment_url(get_post_meta($next_post->ID, 'works_img_1', true)); ?>"
+          src="<?php echo wp_get_attachment_url(get_post_meta($next_post_id, 'works_img_1', true)); ?>"
           alt="<?php echo $next_post_title; ?>"
           height="512"
           width="820"
@@ -151,8 +158,14 @@
         'posts_per_page' => '1',
       ));
       if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the_post();
+      $categories = get_the_category($post->ID);
+      $next_category = $categories[0]->slug;
     ?>
-      <a class="p-works-next__thumb" href="<?php the_permalink(); ?>">
+      <a
+        class="p-works-next__thumb <?php echo 'p-works-next__thumb--' . $next_category; ?>"
+        id="js-next-thumbnail"
+        href="<?php the_permalink(); ?>"
+      >
         <?php if(has_post_thumbnail()): ?>
           <?php
             the_post_thumbnail('large', array(
